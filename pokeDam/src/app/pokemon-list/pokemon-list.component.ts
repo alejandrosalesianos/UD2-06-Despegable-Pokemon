@@ -32,11 +32,14 @@ export class PokemonListComponent implements OnInit {
     });
   }
   getPokemonName(){
-    this.pokemonService.getPokemon(this.pokemonName).subscribe( result => {
-      this.pokemonName = result.name
-      console.log(this.pokemonName)
+    this.pokemonService.getPokemon(this.pokemonName).subscribe(result => {
+      this.pokemonName = result.name;
     })
-  }
+    }
+    getPokemonPhotoUrl(url: string): string {
+      let splitArray = url.split("/");
+      return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${splitArray[6]}.png`;
+    }
 
 }
 
